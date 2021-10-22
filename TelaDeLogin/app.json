@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "TelaDeLogin",
+    "slug": "TelaDeLogin",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.elbertjeandossantos.aplicativos"
+    }
+  },
+  "name": "TelaDeLogin"
+}
