@@ -42,9 +42,9 @@ const RegisterAccountScreen = () => {
         <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Arroz', 'teste')}>
           <Text style={styles.textButton}>Cadastrar</Text>
         </TouchableOpacity>
-        <View style={{marginTop:80}}>
-          <Text style={styles.textBottom} onPress={() => navigation.navigate('LoginScreen')}>Já possui conta?</Text>
-        </View>
+      </View>
+      <View style={{ justifyContent:'flex-end', flex:1, marginBottom:90 }}>
+        <Text style={styles.textBottom} onPress={() => navigation.navigate('LoginScreen')}>Já possui conta?</Text>
       </View>
     </View>
   );

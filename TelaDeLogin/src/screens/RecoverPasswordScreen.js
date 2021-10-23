@@ -31,10 +31,10 @@ const RecoverPasswordScreen = () => {
         <TouchableOpacity style={styles.button} onPress={() => Alert.alert('E-mail inserido', text)}>
           <Text style={styles.textButton}>Login</Text>
         </TouchableOpacity>
-        <View style={{marginTop:150}}>
-          <Text style={styles.textBottom} onPress={() => navigation.navigate('LoginScreen')}>Já possui conta?</Text>
-          <Text style={styles.textBottom} onPress={() => navigation.navigate('RegisterAccountScreen')}>Ainda não possui conta? Cadastre-se</Text>
-        </View>
+      </View>
+      <View style={{ justifyContent:'flex-end', flex:1, marginBottom:50 }}>
+        <Text style={styles.textBottom} onPress={() => navigation.navigate('LoginScreen')}>Já possui conta?</Text>
+        <Text style={styles.textBottom} onPress={() => navigation.navigate('RegisterAccountScreen')}>Ainda não possui conta? Cadastre-se</Text>
       </View>
     </View>
   );

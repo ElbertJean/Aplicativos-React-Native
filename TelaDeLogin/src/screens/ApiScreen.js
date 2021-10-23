@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
-
-import { useNavigation } from '@react-navigation/core';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TextInput,
+    TouchableOpacity,
+    Alert,
+    Animated,
+    FlatList,
+} from 'react-native';
 
 import LogoNerd from '../assets/LogoNerd.png';
 import AppTeste from '../assets/AppTeste.png';
 
 const ApiScreen = () => {
-    const navigation = useNavigation();
-    const [mensagem, setMensagem] = useState('');
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-
-    useEffect(() => {
-        const carrega = async () => {
-            const resposta = await fetch('http://192.168.0.2/api');
-            const texto = await resposta.text();
-            setMensagem(texto);
-        }
-        carrega();
-    }, []);
+    const [lista, setLista] = useState([]);
 
     useEffect(() => {
         const carrega = async () => {
             const resposta = await fetch('http://192.168.0.2/api/usuario.php');
-            const usuario = await resposta.json();
-            setNome(usuario.nome);
-            setEmail(usuario.email);
+            const usuarios = await resposta.json();
+            setLista(usuarios);
         }
         carrega();
     }, []);
@@ -35,18 +30,36 @@ const ApiScreen = () => {
         <View style={styles.container}>
             <View style={{ alignItems: 'center' }}>
                 <Image source={LogoNerd} style={styles.image} />
-            </View>
-            <View style={{ alignItems: 'center' }}>
                 <Image source={AppTeste} style={styles.imageText} />
             </View>
 
-            <View style={{ marginTop: 70 }}>
-                <Text style={{textAlign:'center', marginBottom:10}}>teste</Text>
-                <Text style={{textAlign:'center', marginBottom:10}}>teste</Text>
-                <Text style={{textAlign:'center', marginBottom:10}}>teste</Text>
-                <Text style={{textAlign:'center', marginBottom:10}}>teste</Text>
-                <Text style={{textAlign:'center', marginBottom:10}}>teste</Text>
-            </View>
+            <FlatList 
+                style={{marginTop:50}}
+                data = {lista}
+                pullRefresh = {true} 
+                renderItem={({item : usuario}) =>(
+                    <View style={{
+                        marginVertical:5, 
+                        alignItems:'center', 
+                        borderWidth:1, 
+                        marginHorizontal:30,
+                        paddingVertical:10,
+                        borderRadius:10,
+                        backgroundColor:"#242424",
+                        flexDirection:'row',
+                        borderColor:"#242424"}}>
+                        <Image source={require ('../assets/LogoNerd.png')} style={{height:50, width:50, marginHorizontal:10,}}/>
+                        <Text style={{
+                            color:"#F4F4F4", 
+                            fontSize:16, 
+                            fontWeight:'bold',
+                            marginRight:10}}>{usuario.nome}</Text>
+                        <Text style={{
+                            color:"#E4E4E4"}}>{usuario.email}</Text>
+                    </View>
+                )}
+                keyExtractor={item => item.email}
+            />
         </View>
     );
 }
@@ -65,41 +78,11 @@ const styles = StyleSheet.create({
         height: 100,
         marginTop: 50,
     },
-    textInput: {
-        borderWidth: 1,
-        borderColor: "#242424",
-        marginHorizontal: 20,
-        paddingVertical: 6,
-        paddingLeft: 10,
-        borderRadius: 10,
-        marginTop: 20,
-        fontWeight: '600',
-        fontSize: 16,
-        color: "#F4F4F4",
-        letterSpacing: 1,
-    },
-    button: {
-        borderWidth: 1,
-        borderColor: "#242424",
-        marginHorizontal: 120,
-        marginTop: 20,
-        paddingVertical: 8,
-        backgroundColor: "#242424",
-        borderRadius: 10,
-    },
-    textButton: {
-        textAlign: 'center',
-        color: '#D1D9DC',
-        fontWeight: 'bold',
-        fontSize: 16,
-    },
-    textBottom: {
-        marginTop: 15,
-        textAlign: 'center',
-        color: '#D1D9DC',
-        fontWeight: '600',
-        fontSize: 16,
-        textDecorationLine: 'underline',
+    text:{
+        textAlign:'center', 
+        marginTop:10,
+        fontWeight:'bold',
+        fontSize:16,
     },
 });
 
