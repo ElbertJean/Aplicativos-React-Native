@@ -126,7 +126,7 @@ const VideoScreen = () => {
     <>
       <ScrollView>
         <HeaderApp />
-        <View style={{backgroundColor:"#242424"}}>
+        <View style={{backgroundColor:"#242423"}}>
           <View style={styles.container}>
             <Text style={styles.title}>Vídeos do Youtube</Text>
           </View>
