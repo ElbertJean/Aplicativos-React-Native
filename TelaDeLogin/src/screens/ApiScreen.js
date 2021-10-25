@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    Alert,
-    Animated,
-    FlatList,
-} from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Alert } from 'react-native';
 
 import LogoNerd from '../assets/LogoNerd.png';
 import AppTeste from '../assets/AppTeste.png';
+
+const Accounts = ({account}) => {
+    return (
+        <View style={styles.containerAccount}>
+            <Image source={LogoNerd} style={styles.imageAccount}/>
+            <Text style={styles.textAccount}>{account.nome}</Text>
+            <Text style={{color:"#E4E4E4"}}>{account.email}</Text>
+        </View>
+    );
+};
 
 const ApiScreen = () => {
     const [lista, setLista] = useState([]);
 
     useEffect(() => {
         const carrega = async () => {
-            const resposta = await fetch('http://192.168.0.2/api/usuario.php');
+            const resposta = await fetch('http://192.168.0.6/api/usuario.php');
             const usuarios = await resposta.json();
             setLista(usuarios);
         }
@@ -37,28 +37,8 @@ const ApiScreen = () => {
                 style={{marginTop:50}}
                 data = {lista}
                 pullRefresh = {true} 
-                renderItem={({item : usuario}) =>(
-                    <View style={{
-                        marginVertical:5, 
-                        alignItems:'center', 
-                        borderWidth:1, 
-                        marginHorizontal:30,
-                        paddingVertical:10,
-                        borderRadius:10,
-                        backgroundColor:"#242424",
-                        flexDirection:'row',
-                        borderColor:"#242424"}}>
-                        <Image source={require ('../assets/LogoNerd.png')} style={{height:50, width:50, marginHorizontal:10,}}/>
-                        <Text style={{
-                            color:"#F4F4F4", 
-                            fontSize:16, 
-                            fontWeight:'bold',
-                            marginRight:10}}>{usuario.nome}</Text>
-                        <Text style={{
-                            color:"#E4E4E4"}}>{usuario.email}</Text>
-                    </View>
-                )}
-                keyExtractor={item => item.email}
+                renderItem={({item: account}) =><Accounts account={account}/>}
+                keyExtractor={account => account.email}
             />
         </View>
     );
@@ -83,6 +63,28 @@ const styles = StyleSheet.create({
         marginTop:10,
         fontWeight:'bold',
         fontSize:16,
+    },
+    containerAccount:{
+        marginVertical:5, 
+        alignItems:'center', 
+        borderWidth:1, 
+        marginHorizontal:30,
+        paddingVertical:10,
+        borderRadius:10,
+        backgroundColor:"#242424",
+        flexDirection:'row',
+        borderColor:"#242424",
+    },
+    imageAccount:{
+        height:50, 
+        width:50, 
+        marginHorizontal:10,
+    },
+    textAccount:{
+        color:"#F4F4F4", 
+        fontSize:16, 
+        fontWeight:'bold',
+        marginRight:10
     },
 });
 

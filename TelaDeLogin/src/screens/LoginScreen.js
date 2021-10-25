@@ -6,8 +6,9 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    Animated,
     Alert,
-    Animated
+    FlatList
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
@@ -17,15 +18,13 @@ import AppTeste from '../assets/AppTeste.png';
 
 const LoginScreen = () => {
     const navigation = useNavigation();
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    //const [teste, setTeste] = useState('');
 
     useEffect(() => {
         const carrega = async () => {
-            const resposta = await fetch('http://192.168.0.2/api/usuario.php');
+            const resposta = await fetch('http://192.168.0.6/api/login.php');
             const usuario = await resposta.json();
-            setEmail(usuario.email);
-            setSenha(usuario.senha);
+            setTeste(usuario);
         }
         carrega();
     }, []);
@@ -50,36 +49,42 @@ const LoginScreen = () => {
             </View>
 
             <Animated.View 
-            style={[
-                styles.containerInput,
-                {
-                    transform:[
-                        { translateY: offSet.y}
-                    ]    
-                }
-                
+                style={[
+                    styles.containerInput,
+                    {
+                        transform:[
+                            { translateY: offSet.y}
+                        ]    
+                    }
                 ]}>
                 <TextInput
                     placeholder="Digite o seu e-mail"
                     placeholderTextColor="#C4C4C4"
                     style={styles.textInput}
-                    value={email}
-                    onChangeText={setEmail}
                 />
                 <TextInput
                     placeholder="Digite a sua senha"
                     placeholderTextColor="#C4C4C4"
                     style={styles.textInput}
                     secureTextEntry={true}
-                    value={senha}
-                    onChangeText={setSenha}
                 />
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.textButton} onPress={() => navigation.navigate('ApiScreen')}>Login</Text>
                 </TouchableOpacity>
             </Animated.View>
+            {/* 
+                <FlatList 
+                    data={teste}
+                    renderItem={({item}) =>
+                    <View>
+                        <Text>{item.email}</Text>
+                        <Text>{item.senha}</Text>
+                    </View>}
+                    keyExtractor={item => item.email}
+                />
+            */}
             <View style={{ justifyContent:'flex-end', flex:1, marginBottom:50 }}>
-                <Text style={styles.textBottom} onPress={() => navigation.navigate('RecoverPasswordScreen')}>Esqueciiiiiii minha senha</Text>
+                <Text style={styles.textBottom} onPress={() => navigation.navigate('RecoverPasswordScreen')}>Esqueci minha senha</Text>
                 <Text style={styles.textBottom} onPress={() => navigation.navigate('RegisterAccountScreen')}>Ainda não possui conta? Cadastre-se</Text>
             </View>
         </View>
