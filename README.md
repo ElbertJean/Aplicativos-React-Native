@@ -8,9 +8,11 @@ Repositório destinado para estudo de aplicativos desenvolvidos em React Native
 
 <strong>3-</strong> Configurar as váriaveis de ambiente <br>
 <strong>Do usuário</strong> -> ANDROID_HOME -> %localappdata%\Android\Sdk <br>
-<strong>Do sistema</strong> -> platform_tools -> %localappdata%\Android\Sdk\platform-tools <br>
+<strong>Do usuário - (PATH)</strong> -> C:\Program Files\Java\jdk1.8.0_202\bin <br>
+<strong>Do sistema</strong> -> JAVA_HOME -> C:\Program Files\Java\jdk1.8xxx(versão) <br>
+<strong>Do sistema - (PATH)</strong> -> platform_tools -> %localappdata%\Android\Sdk\platform-tools <br>
 
-<strong>4-</strong> Instalar SCRCPY
+<strong>4-</strong> Instalar SCRCPY e configurar o diretório no <strong>PATH do usuário</strong>
 
 <strong>5-</strong> Configurar a CHAVE SSH no GitHub<br>
 Depois de colocar e-mail no GitHub, ir para <br>
