@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import MenuScreen from './src/screens/MenuScreen';
+import Exercise1Screen from './src/screens/Exercise1Screen';
 
 const Drawer = createDrawerNavigator();
 
@@ -22,7 +23,20 @@ const App = () => {
             headerTitleStyle: {
               fontWeight: 'bold',
             },  
-            //headerLeft: (props) => <LogoMenuTitle {...props} />,
+          }}
+         />
+
+        <Drawer.Screen 
+          name="Exercício 1" 
+          component={Exercise1Screen}
+          options={{ 
+            headerStyle: {
+              backgroundColor: '#007C4F',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },  
           }}
          />
       </Drawer.Navigator>

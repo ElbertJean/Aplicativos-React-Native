@@ -1,12 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
 
-const Button = ({label, style, mensagem}) => {
+import { useNavigation } from '@react-navigation/core';
+
+const Button = ({label, style, page}) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.wrapperButtonNavigation}>
         <TouchableOpacity 
         style={{...styles.containerButton, ...style}}
-        onPress={() => Alert.alert(mensagem)}
+        onPress={() => navigation.navigate(page)}
         >
             <Text style={styles.buttonText}>{label}</Text>
         </TouchableOpacity>
