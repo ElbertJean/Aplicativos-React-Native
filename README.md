@@ -19,7 +19,7 @@ Depois de colocar e-mail no GitHub, ir para <br>
 cd~/.ssh/ e depois cat no arquivo .pub<br>
 
 <strong>6-</strong> Na pasta desejada, para iniciar um novo projeto React Native fazer:<br>
-npm i -g create-react-native-native-app<br>
+npm i -g create-react-native-app<br>
 create-react-native-app NomeDoProjeto<br>
 
 <strong>Ou então:</strong><br>
