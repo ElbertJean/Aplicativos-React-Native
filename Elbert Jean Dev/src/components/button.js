@@ -24,7 +24,8 @@ const ButtonNavigation = ({label, page}) => {
     <View style={styles.wrapperButtonNavigation}>
       <TouchableOpacity 
         style={styles.containerButton}
-        onPress={() => navigation.navigate(page)}>
+        onPress={() => navigation.navigate(page)}
+      >
         <Text style={styles.buttonText}>{label}</Text>
       </TouchableOpacity>
     </View>

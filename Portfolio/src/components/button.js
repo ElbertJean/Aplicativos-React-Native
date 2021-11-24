@@ -1,16 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
 
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/native';
 
-const Button = ({label, style, page}) => {
+const Button = ({label, style, screen}) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.wrapperButtonNavigation}>
         <TouchableOpacity 
-        style={{...styles.containerButton, ...style}}
-        onPress={() => navigation.navigate(page)}
+          style={{...styles.containerButton, ...style}}
+          onPress={() => navigation.navigate(screen)}
         >
             <Text style={styles.buttonText}>{label}</Text>
         </TouchableOpacity>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     marginVertical:10,
   },
   containerButton:{
-    backgroundColor: '#343A40',
+    backgroundColor: '#222222',
     paddingVertical: 10,
     paddingHorizontal: 35,
     borderRadius: 10,

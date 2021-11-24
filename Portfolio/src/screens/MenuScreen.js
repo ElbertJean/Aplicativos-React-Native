@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, SafeAreaView, Alert, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/native';
 
-import portfolio from '../assets/portfolio.png';
 import cerebro from '../assets/cerebro.png';
-import welcome from '../assets/welcome.png';
+import atividades from '../assets/atividades.png';
 import Button from '../components/button';
 
 const MenuScreen = () => {
@@ -14,11 +13,9 @@ const MenuScreen = () => {
   return( 
     <ScrollView>
       <View style={styles.containerImage}>
-        <Image source ={welcome} style ={styles.imageWelcome}/>
-        <Image source ={portfolio} style ={styles.imagePortfolio}/>
+        <Image source ={atividades} style ={styles.imageAtividades}/>
       </View>
-
-      <View style={styles.containerText}>
+      <View>
         <Text style={styles.title}>Neste aplicativo você vai encontrar alguns exercícios feitos por mim
         com o intuito de fixar os conhecimentos obtidos em estudos
         </Text>
@@ -27,21 +24,18 @@ const MenuScreen = () => {
         <View style={styles.containerExercises}>
           <Text style={styles.title2}>1º Exercício</Text>
           <Text style={styles.text}>MDC - Máximo Divisor Comum</Text>
-          <View style={styles.wrapperButtonNavigation}>
-            <TouchableOpacity 
-              style={styles.containerButton}
-              onPress={() => navigation.navigate('Exercício 1')}
-              >
-              <Text style={styles.buttonText}>Acessar</Text>
-            </TouchableOpacity>
-          </View>
+          <Button 
+            label="Acessar" 
+            style={styles.button}
+            screen="Exercício 1"
+          />
         </View>
         <View style={styles.containerExercises2}>
           <Text style={styles.title3}>2º Exercício</Text>
           <Text style={styles.text}>Ainda a definir</Text>
           <Button 
             label='Acessar' 
-            style={styles.botao}
+            style={styles.button}
           />
         </View>
       </View>
@@ -51,29 +45,20 @@ const MenuScreen = () => {
 
 const styles = StyleSheet.create ({
   containerImage:{
-    alignItems:'center',
+    flexDirection:'column',
     backgroundColor: "#007C4F",
-    borderBottomWidth:3,
-    borderColor:"#343A40",
+    justifyContent:'center',
+    alignItems:'center',
   },
-  imageWelcome:{
-    width:'80%',
-    height:30,
-    marginTop:40,
-  },
-  imagePortfolio:{
-    width:'80%',
-    height:80,
-    marginTop:10,
-    marginBottom:50,
-  },
-  containerText:{
-    backgroundColor: "#222222",
+  imageAtividades:{
+    width:'30%',
+    height:123,
+    marginVertical:30,
   },
   title:{
     fontSize:16,
     fontWeight:'bold',
-    color:'#CDD6DB',
+    color:'#222222',
     marginHorizontal:30,
     marginTop:30,
     textAlign:'center',
@@ -81,43 +66,45 @@ const styles = StyleSheet.create ({
   title2:{
     fontSize:25,
     fontWeight:'bold',
-    color:'#CDD6DB',
+    color:'#222222',
     marginTop:40,
     textAlign:'center',
   },
   title3:{
     fontSize:25,
     fontWeight:'bold',
-    color:'#CDD6DB',
+    color:'#000000',
     marginTop:20,
     textAlign:'center',
   },
   imageCerebro:{
     width:'50%',
     height:100,
-    marginTop:10,
+    marginTop:20,
     alignSelf:'center',
     marginBottom:40,
   },
   containerExercises:{
     borderTopWidth:1,
     marginHorizontal:30,
-    borderTopColor:'#F4F4F4',
+    borderTopColor:'#222222',
   },
   containerExercises2:{
     marginHorizontal:30,
   },
   text:{
     fontSize:16,
-    color:'#CDD6DB',
+    color:'#343A40',
     marginTop:10,
     marginLeft:20,
     textAlign:'center',
     },
-  botao:{
+  button:{
     borderColor:'#f4f4f4',
     borderWidth:1,
-    marginVertical:30,
+    marginTop:10,
+    marginBottom:20,
+    backgroundColor:"#222222",
   },
   wrapperButtonNavigation: {
     marginVertical:10,
@@ -134,6 +121,7 @@ const styles = StyleSheet.create ({
     letterSpacing: 1,
     textAlign: 'center',
     color:'#F4F4F4',
+    backgroundColor:'#343A40'
   },
 });
 
