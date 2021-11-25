@@ -11,69 +11,42 @@ const MenuScreen = () => {
   const navigation = useNavigation ();
 
   return( 
-    <ScrollView>
+    <View style={styles.container}>
       <View style={styles.containerImage}>
         <Image source ={atividades} style ={styles.imageAtividades}/>
-      </View>
-      <View>
         <Text style={styles.title}>Neste aplicativo você vai encontrar alguns exercícios feitos por mim
         com o intuito de fixar os conhecimentos obtidos em estudos
         </Text>
-        <Image source ={cerebro} style ={styles.imageCerebro}/>   
-        <View style={styles.containerExercises}>
-          <Text style={styles.title2}>1º Exercício</Text>
-          <Text style={styles.text}>Calculadora</Text>
-          <Button 
-            label="Acessar" 
-            style={styles.button}
-            screen="Exercício 2"
-          />
-        </View>
-        <View style={styles.containerExercises2}>
-          <Text style={styles.title3}>2º Exercício</Text>
-          <Text style={styles.text}>MDC - Máximo Divisor Comum</Text>
-          <Button 
-            label='Acessar' 
-            style={styles.button}
-            screen="Exercício 1"
-          />
-        </View>
+        <Text style={{...styles.title, marginBottom:100, marginTop:20, color:'#222222'}}>Acesse o menu superior para obter acesso as atividades</Text>
+        {/*
+          <Image source ={cerebro} style ={styles.imageCerebro}/>
+        */}
       </View>
-    </ScrollView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create ({
-  containerImage:{
+  container:{
+    flex:1,
     backgroundColor: "#007C4F",
+    justifyContent:'center',
+  },
+  containerImage:{
     alignItems:'center',
   },
   imageAtividades:{
-    width:'30%',
-    height:123,
-    marginVertical:30,
+    width:'40%',
+    height:165,
   },
   title:{
-    fontSize:16,
+    fontSize:18,
     fontWeight:'bold',
     color:'#222222',
     marginHorizontal:30,
     marginTop:30,
     textAlign:'center',
-  },
-  title2:{
-    fontSize:25,
-    fontWeight:'bold',
-    color:'#222222',
-    marginTop:40,
-    textAlign:'center',
-  },
-  title3:{
-    fontSize:25,
-    fontWeight:'bold',
-    color:'#000000',
-    marginTop:20,
-    textAlign:'center',
+    color:'#E1ECE6'
   },
   imageCerebro:{
     width:'50%',
@@ -81,51 +54,7 @@ const styles = StyleSheet.create ({
     marginTop:20,
     alignSelf:'center',
     marginBottom:40,
-  },
-  container:{
-    borderBottomWidth:2,
-    marginHorizontal:30,
-    borderTopColor:'#007C4F',
-  },
-  containerExercises:{
-    borderTopWidth:1,
-    marginHorizontal:30,
-    borderTopColor:'#222222',
-  },
-  containerExercises2:{
-    marginHorizontal:30,
-  },
-  text:{
-    fontSize:16,
-    color:'#343A40',
-    marginTop:10,
-    marginLeft:20,
-    textAlign:'center',
-    },
-  button:{
-    borderColor:'#f4f4f4',
-    borderWidth:1,
-    marginTop:10,
-    marginBottom:20,
-    backgroundColor:"#222222",
-  },
-  wrapperButtonNavigation: {
-    marginVertical:10,
-  },
-  containerButton:{
-    backgroundColor: '#343A40',
-    paddingVertical: 10,
-    paddingHorizontal: 35,
-    borderRadius: 10,
-  },
-  buttonText:{
-    fontSize: 14,
-    textTransform: 'capitalize',
-    letterSpacing: 1,
-    textAlign: 'center',
-    color:'#F4F4F4',
-    backgroundColor:'#343A40'
-  },
+  }
 });
 
 export default MenuScreen;

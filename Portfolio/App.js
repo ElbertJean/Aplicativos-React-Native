@@ -21,7 +21,7 @@ const App = () => {
             headerStyle: {
               backgroundColor: '#007C4F',
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#E1ECE6',
             headerTitleStyle: {
               fontWeight: 'bold',
             },  
@@ -35,7 +35,7 @@ const App = () => {
             headerStyle: {
               backgroundColor: '#007C4F',
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#E1ECE6',
             headerTitleStyle: {
               fontWeight: 'bold',
             },  
@@ -49,7 +49,7 @@ const App = () => {
             headerStyle: {
               backgroundColor: '#007C4F',
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#E1ECE6',
             headerTitleStyle: {
               fontWeight: 'bold',
             },  

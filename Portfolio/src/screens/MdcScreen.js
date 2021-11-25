@@ -22,7 +22,7 @@ const MdcScreen = () => {
   const resultado = mdc(primeiroValor,segundoValor);
 
   return( 
-    <ScrollView>
+    <View style={styles.container}>
       <View>
         <Text style={styles.title}>MDC - Máximo divisor comum</Text>
         <Text style={styles.text}>O máximo divisor comum entre dois ou mais números 
@@ -60,11 +60,15 @@ const MdcScreen = () => {
           }
         </View>
      </View>
-    </ScrollView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create ({
+  container:{
+    flex:1,
+    backgroundColor:"#E1ECE6",
+  },
   title:{
     fontSize:20,
     fontWeight:'bold',

@@ -18,7 +18,7 @@ const Menu = () => {
       <View style={styles.containerButton}>
           <Button label = "Tela inicial" screen ="Tela inicial" style={styles.button}/>
           <Button label = "Calculadora" screen ="Calculadora" style={styles.button}/>
-          <Button label = "Exercício 1" screen ="MDC" style={styles.button}/>
+          <Button label = "MDC" screen ="MDC" style={styles.button}/>
       </View>
     </DrawerContentScrollView>
   );
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     backgroundColor:"#007C4F",
     borderWidth:2,
-    borderColor:'#F4F4F4',
+    borderColor:'#E1ECE6',
   },
   containerImage:{
     backgroundColor: "#007C4F",
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
       marginHorizontal:30,
   },
   button:{
-    borderColor:'white',
+    borderColor:'#E1ECE6',
     borderWidth:1
   }
 });

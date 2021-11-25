@@ -4,38 +4,109 @@ import {Text, StyleSheet, View, TouchableOpacity, Button} from 'react-native';
 export default class CalculatorScreen extends Component {
     constructor(){
         super()
-        this.state = {}
+        this.state = {
+            resultText:"",
+            calculationText:""
+        }
+        this.operations = ['Del', '/', '*', '-', '+']
+    }
+
+    calculateResult() {
+        const text =  this.state.resultText
+        console.log(text, eval(text))
+        this.setState({
+            calculationText: eval(text)
+        })
+    }
+
+    validate() {
+        const text = this.state.resultText
+        switch(text.slice(-1)) {
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            return false
+        }
+        return true
+    }
+
+    buttonPressed(text) {
+
+        if (text == '=') {
+            return this.validate() && this.calculateResult()
+        }
+        
+        this.setState({
+            resultText: this.state.resultText+text
+        })
+    }
+
+    operate (operations) {
+        switch(operations){
+            case 'Del':
+                let text = this.state.resultText.split('')
+                text.pop()
+                this.setState({
+                    resultText:text.join('')
+                })
+                break
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+
+                const lastChar = this.state.resultText.split('').pop()
+                
+                if(this.operations.indexOf(lastChar) > 0) return
+
+                if(this.state.text == '') return
+                this.setState({
+                    resultText: this.state.resultText + operations
+                })
+
+                
+        }
     }
 
     
     render(){
         let rows = []
-        let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [0, 0, '=']]
+        let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['.', 0, '=']]
         for (let i = 0; i < 4; i++) {
             let row = []
             for (let j = 0; j < 3; j++) {
-                row.push(<TouchableOpacity style={styles.btn}>
+                row.push(
+                <TouchableOpacity
+                    key={nums[i][j]}
+                    style={styles.btn}
+                    onPress ={() => this.buttonPressed(nums[i][j])}
+                >
                     <Text style={styles.btnText}>{nums[i][j]}</Text>
                 </TouchableOpacity>)
             }
-            rows.push(<View style={styles.row}>{row}</View>)
+            rows.push(<View key={i} style={styles.row}>{row}</View>)
         }
 
-        let operations = ['+', '-', '*', '/']
         let ops = []
-        for(let i = 0; i < 4; i++){
-            ops.push(<TouchableOpacity style={styles.btn}>
-                <Text style={styles.btnText, styles.white}>{operations[i]}</Text>
+        for(let i = 0; i < 5; i++){
+            ops.push(
+            <TouchableOpacity
+                key={this.operations[i]}
+                style={styles.btn}
+                onPress={() => this.operate(this.operations[i])}
+            >
+                <Text style={styles.btnText, styles.white}>{this.operations[i]}</Text>
             </TouchableOpacity>)
         }
 
         return(
             <View style={styles.container}>
                 <View style={styles.result}>
-                    <Text style={styles.resultText}>11*11</Text>
+                    <Text style={styles.resultText}>{this.state.resultText}</Text>
                 </View>
                 <View style={styles.calculation}>
-                    <Text style={styles.calculationText}>121</Text>
+                    <Text style={styles.calculationText}>{this.state.calculationText}</Text>
                 </View>
                 <View style={styles.buttons}>
                     <View style={styles.number}>
@@ -55,16 +126,16 @@ const styles = StyleSheet.create ({
         flex:1,
     },
     resultText:{
-        fontSize:20,
+        fontSize:35,
         fontWeight:'bold',
-        color:"white"
-    },
-    btnText:{
-        fontSize:25,
         color:"#222222"
     },
+    btnText:{
+        fontSize:30,
+        color:"#E1ECE6"
+    },
     white:{
-        color:'white',
+        color:'#E1ECE6',
         fontSize:25
     },
     btn:{
@@ -74,8 +145,9 @@ const styles = StyleSheet.create ({
         justifyContent:'center',
     },
     calculationText:{
-        fontSize:14,
-        color:"white"
+        fontSize:30,
+        fontWeight:'bold',
+        color:"#007C4F"
     },
     row:{
         flexDirection:'row',
@@ -85,14 +157,14 @@ const styles = StyleSheet.create ({
     },
     result:{
         flex:2,
-        backgroundColor:'red',
+        backgroundColor:'#E1ECE6',
         justifyContent:'center',
         alignItems:'flex-end',
         paddingRight:20,
     },
     calculation:{
         flex:1,
-        backgroundColor:'green',
+        backgroundColor:'#E1ECE6',
         justifyContent:'center',
         alignItems:'flex-end',
         paddingRight:20,
@@ -103,12 +175,12 @@ const styles = StyleSheet.create ({
     },
     number:{
         flex: 3 ,
-        backgroundColor:'yellow',
+        backgroundColor:'#434343',
     },
     operations:{
         flex:1,
         justifyContent:'space-around',
         alignItems:'stretch',
-        backgroundColor:'black',
+        backgroundColor:'#636363',
     },
 });

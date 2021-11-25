@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
   },
   buttonText:{
     fontSize: 14,
-    textTransform: 'capitalize',
     letterSpacing: 1,
     textAlign: 'center',
     color:'#F4F4F4',
