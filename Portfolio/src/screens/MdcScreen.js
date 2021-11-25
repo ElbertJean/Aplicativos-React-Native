@@ -16,9 +16,9 @@ const mdc = (a, b) => {
   }
 }
 
-const Exercise1Screen = () => {
-  let [primeiroValor, setPrimeiroValor] = useState();
-  let [segundoValor, setSegundoValor] = useState();
+const MdcScreen = () => {
+  let [primeiroValor, setPrimeiroValor] = useState(0);
+  let [segundoValor, setSegundoValor] = useState(0);
   const resultado = mdc(primeiroValor,segundoValor);
 
   return( 
@@ -48,7 +48,7 @@ const Exercise1Screen = () => {
           onChangeText={setSegundoValor}
         />
         <View>
-          {primeiroValor === 0 && segundoValor === 0 ? 
+          {primeiroValor === 0 || segundoValor === 0 ? 
             <></> 
             :
             <>
@@ -102,4 +102,4 @@ const styles = StyleSheet.create ({
   }
 });
 
-export default Exercise1Screen;
+export default MdcScreen;

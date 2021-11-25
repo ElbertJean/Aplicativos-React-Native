@@ -4,16 +4,18 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import MenuScreen from './src/screens/MenuScreen';
-import Exercise1Screen from './src/screens/Exercise1Screen';
+import MdcScreen from './src/screens/MdcScreen';
+import CalculatorScreen from './src/screens/CalculatorScreen';
+import Menu from './src/components/Menu';
 
 const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="MenuScreen">
+      <Drawer.Navigator initialRouteName="MenuScreen" drawerContent={props => <Menu {...props} />}>
         <Drawer.Screen 
-          name="Tela Inicial" 
+          name="Tela inicial" 
           component={MenuScreen}
           options={{ 
             headerStyle: {
@@ -27,8 +29,22 @@ const App = () => {
          />
 
         <Drawer.Screen 
-          name="Exercício 1" 
-          component={Exercise1Screen}
+          name="MDC" 
+          component={MdcScreen}
+          options={{ 
+            headerStyle: {
+              backgroundColor: '#007C4F',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },  
+          }}
+         />
+
+        <Drawer.Screen 
+          name="Calculadora" 
+          component={CalculatorScreen}
           options={{ 
             headerStyle: {
               backgroundColor: '#007C4F',

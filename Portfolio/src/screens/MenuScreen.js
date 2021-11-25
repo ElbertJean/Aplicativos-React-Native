@@ -19,23 +19,23 @@ const MenuScreen = () => {
         <Text style={styles.title}>Neste aplicativo você vai encontrar alguns exercícios feitos por mim
         com o intuito de fixar os conhecimentos obtidos em estudos
         </Text>
-        <Image source ={cerebro} style ={styles.imageCerebro}/>
-        
+        <Image source ={cerebro} style ={styles.imageCerebro}/>   
         <View style={styles.containerExercises}>
           <Text style={styles.title2}>1º Exercício</Text>
-          <Text style={styles.text}>MDC - Máximo Divisor Comum</Text>
+          <Text style={styles.text}>Calculadora</Text>
           <Button 
             label="Acessar" 
             style={styles.button}
-            screen="Exercício 1"
+            screen="Exercício 2"
           />
         </View>
         <View style={styles.containerExercises2}>
           <Text style={styles.title3}>2º Exercício</Text>
-          <Text style={styles.text}>Ainda a definir</Text>
+          <Text style={styles.text}>MDC - Máximo Divisor Comum</Text>
           <Button 
             label='Acessar' 
             style={styles.button}
+            screen="Exercício 1"
           />
         </View>
       </View>
@@ -45,9 +45,7 @@ const MenuScreen = () => {
 
 const styles = StyleSheet.create ({
   containerImage:{
-    flexDirection:'column',
     backgroundColor: "#007C4F",
-    justifyContent:'center',
     alignItems:'center',
   },
   imageAtividades:{
@@ -83,6 +81,11 @@ const styles = StyleSheet.create ({
     marginTop:20,
     alignSelf:'center',
     marginBottom:40,
+  },
+  container:{
+    borderBottomWidth:2,
+    marginHorizontal:30,
+    borderTopColor:'#007C4F',
   },
   containerExercises:{
     borderTopWidth:1,
