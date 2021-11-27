@@ -1,47 +1,40 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet,View, ScrollView, TextInput} from 'react-native';
+import {Text, StyleSheet,View, ScrollView, TextInput, Alert} from 'react-native';
 
-const mdc = (a, b) => {
-  let valor1 = Number(a);
-  let valor2 = Number(b);
-  let resto = Number(1);
-  console.log(valor1, valor2, resto);
-
-  while(resto != 0) {
-    resto = valor1 % valor2;
-    valor1 = valor2;
-    valor2 = resto;
-    console.log(valor1, valor2, resto);
-    return valor1;
+const soma = (a, b) => {
+  
+  if(isNaN(a) || isNaN(b)) {
+    Alert.alert('Insira um número válido')
+  } else {
+    return Number(a)+ Number(b);
   }
 }
 
-const MdcScreen = () => {
+const SumScreen = () => {
   let [primeiroValor, setPrimeiroValor] = useState(0);
   let [segundoValor, setSegundoValor] = useState(0);
-  const resultado = mdc(primeiroValor,segundoValor);
+  const resultado = soma(primeiroValor,segundoValor);
 
   return( 
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View>
-        <Text style={styles.title}>MDC - Máximo divisor comum</Text>
-        <Text style={styles.text}>O máximo divisor comum entre dois ou mais números 
-          reais é o maior número real que é fator de tais números. Por exemplo, os 
-          divisores comuns de <Text style={{fontWeight:'bold'}}>12 e 18</Text> são 
-          <Text style={{fontWeight:'bold'}}>1,2,3 e 6</Text>, logo 
-          <Text style={{fontWeight:'bold'}}> MDC = 6</Text>
+        <Text style={styles.title}>Soma</Text>
+        <Text style={styles.text}>A adição é uma entre as quatro operações básicas da 
+          matemática, sendo a <Text style={{fontWeight:'bold'}}>primeira operação</Text> a ser estudada. O resultado de uma 
+          adição entre dois ou mais números é conhecido como soma.
         </Text>
-        <Text style={{...styles.text, marginTop:20}}>Insira nos campos abaixo dois números reais para 
-          obter o MDC</Text>
+        <Text style={{...styles.text, marginTop:20}}>
+          Insira nos campos abaixo dois números para serem somados 
+        </Text>
       </View>
       <View>
-        <Text style={{...styles.title, fontSize:18, marginTop:30}}>Insira o maior número</Text>
+        <Text style={{...styles.title, fontSize:18, marginTop:30}}>Insira o primeiro número</Text>
         <TextInput 
           style={styles.textInput}
           keyboardType="decimal-pad"
           onChangeText={setPrimeiroValor}
         />
-        <Text style={{...styles.title, fontSize:18, marginTop:40}}>Insira o menor número</Text>
+        <Text style={{...styles.title, fontSize:18, marginTop:40}}>Insira o segundo número</Text>
         <TextInput 
           style={styles.textInput}
           keyboardType="decimal-pad"
@@ -52,15 +45,15 @@ const MdcScreen = () => {
             <></> 
             :
             <>
-              <Text style={{...styles.text, fontWeight:'bold', marginTop:40}}>O MDC é</Text>
+              <Text style={{...styles.text, fontWeight:'bold', marginTop:40}}>A soma dos valores é</Text>
               <View style={styles.rowResult}>
                 <Text style={{...styles.title, marginTop:0, color:"#F4F4F4"}}>{resultado}</Text>
               </View>
             </>
           }
         </View>
-     </View>
-    </View>
+      </View>
+    </ScrollView>
   )
 }
 
@@ -70,7 +63,7 @@ const styles = StyleSheet.create ({
     backgroundColor:"#E1ECE6",
   },
   title:{
-    fontSize:22,
+    fontSize:25,
     fontWeight:'bold',
     color:'#222222',
     marginHorizontal:30,
@@ -80,8 +73,8 @@ const styles = StyleSheet.create ({
   text:{
     fontSize:16,
     color:'#222222',
-    marginHorizontal:20,
-    marginTop:30,
+    marginHorizontal:30,
+    marginTop:20,
     textAlign:'center',
   },
   textInput:{
@@ -100,10 +93,10 @@ const styles = StyleSheet.create ({
     borderWidth:1,
     backgroundColor:'#007C4F',
     borderRadius:10,
-    marginHorizontal:150,
+    marginHorizontal:100,
     marginTop:10,
     paddingVertical:4,
   }
 });
 
-export default MdcScreen;
+export default SumScreen;

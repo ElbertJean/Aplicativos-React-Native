@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Dimensions} from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
 import cerebro from '../assets/cerebro.png';
 import atividades from '../assets/atividades.png';
 import Button from '../components/button';
+
+const width = Dimensions.get('screen').width;
 
 const MenuScreen = () => {
   const navigation = useNavigation ();
@@ -17,10 +19,7 @@ const MenuScreen = () => {
         <Text style={styles.title}>Neste aplicativo você vai encontrar alguns exercícios feitos por mim
         com o intuito de fixar os conhecimentos obtidos em estudos
         </Text>
-        <Text style={{...styles.title, marginBottom:100, marginTop:20, color:'#222222'}}>Acesse o menu superior para obter acesso as atividades</Text>
-        {/*
-          <Image source ={cerebro} style ={styles.imageCerebro}/>
-        */}
+        <Text style={{...styles.title, ...styles.subTitle}}>Acesse o menu superior para obter acesso as atividades</Text>
       </View>
     </View>
   )
@@ -37,7 +36,7 @@ const styles = StyleSheet.create ({
   },
   imageAtividades:{
     width:'40%',
-    height:165,
+    height:(204.8/512)*width,
   },
   title:{
     fontSize:18,
@@ -48,13 +47,11 @@ const styles = StyleSheet.create ({
     textAlign:'center',
     color:'#E1ECE6'
   },
-  imageCerebro:{
-    width:'50%',
-    height:100,
-    marginTop:20,
-    alignSelf:'center',
-    marginBottom:40,
-  }
+  subTitle:{
+    marginBottom:130, 
+    marginTop:20, 
+    color:'#222222'
+  },
 });
 
 export default MenuScreen;

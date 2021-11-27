@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/core';
 
 import atividades from '../assets/atividades.png';
 import Button from './button';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Menu = () => {
   const navigation = useNavigation();
@@ -15,11 +16,17 @@ const Menu = () => {
       <View style={styles.containerImage}>
         <Image source ={atividades} style ={styles.imageAtividades}/>
       </View>
-      <View style={styles.containerButton}>
-          <Button label = "Tela inicial" screen ="Tela inicial" style={styles.button}/>
-          <Button label = "Calculadora" screen ="Calculadora" style={styles.button}/>
-          <Button label = "MDC" screen ="MDC" style={styles.button}/>
-      </View>
+      <ScrollView>
+        <View style={styles.containerButton}>
+            <Button label = "Tela inicial" screen ="Tela inicial" style={styles.button}/>
+            <Button label = "Soma" screen ="Soma" style={styles.button}/>
+            <Button label = "Divisão" screen ="Divisão" style={styles.button}/>
+            <Button label = "Multiplicação" screen ="Multiplicação" style={styles.button}/>
+            <Button label = "Tabuada" screen ="Tabuada" style={styles.button}/>
+            <Button label = "Calculadora" screen ="Calculadora" style={styles.button}/>
+            <Button label = "MDC" screen ="MDC" style={styles.button}/>
+        </View>
+      </ScrollView>
     </DrawerContentScrollView>
   );
 };
