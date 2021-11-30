@@ -1,25 +1,31 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet,View, ScrollView, TextInput} from 'react-native';
+import {Text, StyleSheet,View, TextInput, Alert} from 'react-native';
 
 const mdc = (a, b) => {
-  let valor1 = Number(a);
-  let valor2 = Number(b);
   let resto = Number(1);
-  console.log(valor1, valor2, resto);
-
-  while(resto != 0) {
-    resto = valor1 % valor2;
-    valor1 = valor2;
-    valor2 = resto;
-    console.log(valor1, valor2, resto);
-    return valor1;
+  console.log(a, b, resto);
+  
+  if(isNaN(a) || isNaN(b) || a <0 || b <0 || b > a) {
+    console.log('Insira um número válido')
+    return Number(0);
+  } else {
+    while(resto != 0) {
+      resto = a % b;
+      a = Number(b);
+      b = Number(resto);
+      console.log(a, b, resto);
+    }
+    console.log(typeof(a), typeof(b), typeof(resto))
+    return a;
   }
 }
 
+console.log(mdc(50,28))
+
 const MdcScreen = () => {
-  let [primeiroValor, setPrimeiroValor] = useState(0);
-  let [segundoValor, setSegundoValor] = useState(0);
-  const resultado = mdc(primeiroValor,segundoValor);
+  const [primeiroValor, setPrimeiroValor] = useState(0);
+  const [segundoValor, setSegundoValor] = useState(0);
+  //const resultado = mdc(primeiroValor, segundoValor);
 
   return( 
     <View style={styles.container}>
@@ -28,7 +34,7 @@ const MdcScreen = () => {
         <Text style={styles.text}>O máximo divisor comum entre dois ou mais números 
           reais é o maior número real que é fator de tais números. Por exemplo, os 
           divisores comuns de <Text style={{fontWeight:'bold'}}>12 e 18</Text> são 
-          <Text style={{fontWeight:'bold'}}>1,2,3 e 6</Text>, logo 
+          <Text style={{fontWeight:'bold'}}> 1,2,3 e 6</Text>, logo 
           <Text style={{fontWeight:'bold'}}> MDC = 6</Text>
         </Text>
         <Text style={{...styles.text, marginTop:20}}>Insira nos campos abaixo dois números reais para 
@@ -48,13 +54,16 @@ const MdcScreen = () => {
           onChangeText={setSegundoValor}
         />
         <View>
-          {primeiroValor === 0 || segundoValor === 0 ? 
+          {primeiroValor === 0 || 
+          segundoValor === 0 || 
+          primeiroValor < 0 || 
+          segundoValor < 0 ? 
             <></> 
             :
             <>
               <Text style={{...styles.text, fontWeight:'bold', marginTop:40}}>O MDC é</Text>
               <View style={styles.rowResult}>
-                <Text style={{...styles.title, marginTop:0, color:"#F4F4F4"}}>{resultado}</Text>
+                <Text style={{...styles.title, marginTop:0, color:"#F4F4F4"}}>''</Text>
               </View>
             </>
           }

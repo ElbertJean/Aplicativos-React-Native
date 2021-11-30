@@ -1,24 +1,21 @@
 import React, {useState} from 'react';
 import {Text, StyleSheet,View, ScrollView, TextInput, Alert} from 'react-native';
 
-const tabuada = (a) => {
-  
+const Tabuada = (a) => {
   if(isNaN(a) || a < 0){
     Alert.alert('Insira um número válido')
   } else {
-    for(let i = 0; i <= 10; i++) {
-      const result = i * a;
-      console.log(result);
-      <View>
-        <Text style={{color:'black'}}>{result}</Text>
-      </View>
-    }
+  for(let i = 0; i <= 10; i++) {
+    let tabuada = i * a;
+    console.log(tabuada);
   }
+}
 }
 
 const TabuadaScreen = () => {
+
   let [valor, setValor] = useState(0);
-  const resultado = tabuada(valor);
+  let resultado = Tabuada(Number(valor));
 
   return( 
     <ScrollView style={styles.container}>
@@ -47,9 +44,8 @@ const TabuadaScreen = () => {
             :
             <>
               <Text style={{...styles.text, fontWeight:'bold', marginTop:40}}>{`A tabuada do ${valor} é`}</Text>
-              <View style={styles.rowResult}>
-                <Text style={{...styles.title, marginTop:0, color:"#F4F4F4"}}>{resultado}</Text>
-              </View>
+              <Text style={{...styles.text, fontWeight:'bold', marginTop:40}}>{resultado}</Text>
+              
             </>
           }
         </View>
