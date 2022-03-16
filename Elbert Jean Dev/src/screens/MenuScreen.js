@@ -14,8 +14,8 @@ const MenuScreen = () => {
 
   return (
     <ScrollView>
-      <HeaderApp />
-      <View style={{backgroundColor:"#242424"}}>
+      <HeaderApp/>
+      <View animation="fadeInUp" style={{backgroundColor:"#242424"}}>
         <View style={styles.container}>
           <Text style={styles.title}>Quem sou eu?</Text>
           <Text style={styles.subTitle}>Formado em Técnico em Automação 

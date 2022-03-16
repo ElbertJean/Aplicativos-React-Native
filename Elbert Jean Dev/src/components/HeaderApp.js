@@ -7,7 +7,7 @@ import code from '../assents/code.jpg';
 
 const HeaderApp = () => {
   return (
-      <ImageBackground source={code} style={styles.imageHead}>
+      <ImageBackground animation="fadeInRight" source={code} style={styles.imageHead}>
         <View style={styles.containerTitle}>
           <Text style={styles.subTitleHead}>Seja Bem Vindo!</Text>
           <Text style={styles.titleHead}>Elbert Jean</Text>
