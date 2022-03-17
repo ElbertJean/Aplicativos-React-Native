@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/screens/signIn/Home';
 import Login from './src/screens/signIn/Login';
 import Register from './src/screens/signIn/Register';
+import Testes from './src/screens/signIn/Testes';
 import RecoverPassword from './src/screens/signIn/RecoverPassword';
 import Congratulations from './src/screens/homePage/Congratulations';
 import HomeUser from './src/screens/homePage/HomeUser';
@@ -18,7 +19,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="#343A40" barStyle='light-content'/>
-      <Stack.Navigator initialRouteName='HomeUser'>
+      <Stack.Navigator initialRouteName='Testes'>
         <Stack.Screen 
           name='Home' 
           component={Home}
@@ -58,6 +59,12 @@ const App = () => {
         <Stack.Screen 
           name='Budget' 
           component={Budget}
+          options = {{ headerShown:false }}
+        />
+
+        <Stack.Screen 
+          name='Testes' 
+          component={Testes}
           options = {{ headerShown:false }}
         />
       </Stack.Navigator>

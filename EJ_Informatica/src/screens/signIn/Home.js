@@ -76,7 +76,7 @@ const styles = StyleSheet.create ({
         borderRadius:20,
         bottom:40,
         alignSelf:'center',
-        justifyContent:'center',
+        justifyContent:'flex-start',
         alignItems:'center',
     },
     textButton:{
