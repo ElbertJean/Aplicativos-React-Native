@@ -23,6 +23,9 @@ const Home = () => {
                 <Animatable.View  animation='fadeInRight' delay={2000}>
                     <Button style={{marginTop:10}} name="Props" page="Props"/>
                 </Animatable.View>
+                <Animatable.View  animation='fadeInRight' delay={2500}>
+                    <Button style={{marginTop:10}} name="useState" page="States"/>
+                </Animatable.View>
             </Animatable.View>
         </View>
     );
