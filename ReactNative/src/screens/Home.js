@@ -17,7 +17,12 @@ const Home = () => {
             </Animatable.View>
 
             <Animatable.View animation='fadeInUp' delay={1000} style={styles.containerBody}>
-                <Button style={{marginTop:40}} name="Hello World" page="HelloWorld"/>
+                <Animatable.View animation='fadeInRight' delay={1500}>
+                    <Button style={{marginTop:40}} name="Hello World" page="HelloWorld"/>
+                </Animatable.View>
+                <Animatable.View  animation='fadeInRight' delay={2000}>
+                    <Button style={{marginTop:10}} name="Props" page="Props"/>
+                </Animatable.View>
             </Animatable.View>
         </View>
     );
